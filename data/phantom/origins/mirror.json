@@ -1,0 +1,18 @@
+{
+	"powers": [
+		"phantom:mirror_world",
+		"phantom:looking_glass",
+		"phantom:unstable_gateway",
+		"phantom:trap_in_a_box",
+		"phantom:reflective_liquids",
+		"phantom:incorporeal",
+		"phantom:interdimensional_inconsistencies",
+		"phantom:reflective_metals",
+		"phantom:shattering"
+	],
+	"icon": "minecraft:glass",
+	"order": 4,
+	"impact": 2,
+	"name": "Man in the Mirror",
+	"description": "A normal being embodied with the power of an interdimensional mirror."
+}

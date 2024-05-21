@@ -1,0 +1,37 @@
+{
+	"description": "Reflective Armors",
+	"values": [
+		{
+			"id": "minecraft:iron_helmet",
+			"required": false
+		},
+		{
+			"id": "minecraft:iron_chestplate",
+			"required": false
+		},
+		{
+			"id": "minecraft:iron_leggings",
+			"required": false
+		},
+		{
+			"id": "minecraft:iron_boots",
+			"required": false
+		},
+		{
+			"id": "minecraft:golden_helmet",
+			"required": false
+		},
+		{
+			"id": "minecraft:golden_chestplate",
+			"required": false
+		},
+		{
+			"id": "minecraft:golden_leggings",
+			"required": false
+		},
+		{
+			"id": "minecraft:golden_boots",
+			"required": false
+		}
+	]
+}

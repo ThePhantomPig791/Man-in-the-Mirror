@@ -1,0 +1,2 @@
+execute in minecraft:overworld if block ~ ~ ~ #phantom:glass run execute in phantom:mirror unless block ~ ~ ~ #phantom:glass run particle minecraft:campfire_signal_smoke ~ ~ ~ 0 0 0 1 1
+execute in minecraft:overworld if block ~ ~ ~ #phantom:glass run clone from minecraft:overworld ~ ~ ~ ~ ~ ~ to phantom:mirror ~ ~ ~ force

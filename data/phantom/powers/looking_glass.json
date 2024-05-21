@@ -1,0 +1,226 @@
+{
+    "type": "origins:multiple",
+    "name": "Looking Glass",
+    "description": "Any glass you walk through will transport you to the Mirror World, and any glass blocks in the physical plane will also appear at the same location in the Mirror World.",
+    "phasing": {
+        "type": "origins:phasing",
+        "render_type": "none",
+        "block_condition": {
+            "type": "origins:block",
+            "block": "minecraft:glass"
+        },
+        "phase_down_condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:sneaking"
+                },
+                {
+                    "type": "origins:on_block"
+                }
+            ]
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:or",
+                    "conditions": [
+                        {
+                            "type": "origins:dimension",
+                            "dimension": "minecraft:overworld"
+                        },
+                        {
+                            "type": "origins:dimension",
+                            "dimension": "phantom:mirror"
+                        }
+                    ]
+                },
+                {
+                    "type": "origins:status_effect",
+                    "effect": "minecraft:weakness",
+                    "inverted": true
+                }
+            ]
+            
+        }
+    },
+    "transport": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:or",
+                    "conditions": [
+                        {
+                            "type": "origins:in_block",
+                            "block_condition": {
+                                "type": "origins:block",
+                                "block": "minecraft:glass"
+                            }
+                        },
+                        {
+                            "type": "origins:in_block_anywhere",
+                            "block_condition": {
+                                "type": "origins:block",
+                                "block": "minecraft:glass"
+                            },
+                            "comparison": "!=",
+                            "compare_to": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "origins:status_effect",
+                    "effect": "minecraft:weakness",
+                    "inverted": true
+                },
+                {
+                    "type": "origins:or",
+                    "conditions": [
+                        {
+                            "type": "origins:dimension",
+                            "dimension": "minecraft:overworld"
+                        },
+                        {
+                            "type": "origins:dimension",
+                            "dimension": "phantom:mirror"
+                        }
+                    ]
+                }
+            ]
+        },
+        "rising_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:delay",
+                    "ticks": 5,
+                    "action": {
+                        "type": "origins:apply_effect",
+                        "effect": {
+                            "effect": "minecraft:weakness",
+                            "duration": 60,
+                            "amplifier": 0,
+                            "is_ambient": true,
+                            "show_particles": false,
+                            "show_icon": true
+                        }
+                    }
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 10,
+                    "action": {
+                        "type": "origins:if_else",
+                        "condition": {
+                            "type": "origins:dimension",
+                            "dimension": "phantom:mirror"
+                        },
+                        "if_action": {
+                            "type": "origins:apply_effect",
+                            "effect": {
+                                "effect": "minecraft:slow_falling",
+                                "duration": 60,
+                                "amplifier": 255,
+                                "is_ambient": true,
+                                "show_particles": false,
+                                "show_icon": false
+                            }
+                        }
+                    }
+                },
+                {
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type": "origins:dimension",
+                        "dimension": "phantom:mirror"
+                    },
+                    "if_action": {
+                        "type": "origins:execute_command",
+                        "command": "execute in minecraft:overworld run tp @s ~ ~ ~ ~180 ~",
+                        "permission_level": 4
+                    },
+                    "else_action": {
+                        "type": "origins:execute_command",
+                        "command": "execute in phantom:mirror run tp @s ~ ~ ~ ~180 ~",
+                        "permission_level": 4
+                    }
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "playsound minecraft:block.glass.break player @a[distance=..10] ~ ~ ~ 0.5 0.1",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "origins:sneaking"
+                            },
+                            {
+                                "type": "origins:in_block",
+                                "block_condition": {
+                                    "type": "origins:offset",
+                                    "y": 1,
+                                    "condition": {
+                                        "type": "origins:block",
+                                        "block": "minecraft:glass"
+                                    }
+                                },
+                                "inverted": true
+                            }
+                        ]
+                    },
+                    "if_action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:execute_command",
+                                "command": "tp @s ~ ~2 ~ ~180 ~",
+                                "permission_level": 4
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "particle minecraft:end_rod ~ ~-1 ~ 0.1 0.1 0.1 0.01 50 normal",
+                                "permission_level": 4
+                            },
+                            {
+                                "type": "origins:delay",
+                                "ticks": 5,
+                                "action": {
+                                    "type": "origins:execute_command",
+                                    "command": "particle minecraft:end_rod ~ ~-1 ~ 0.1 0.1 0.1 0.01 50 normal",
+                                    "permission_level": 4
+                                }
+                            }
+                        ]
+                    },
+                    "else_action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:execute_command",
+                                "command": "particle minecraft:end_rod ~ ~1 ~ 0.1 0.3 0.1 0.01 50 normal",
+                                "permission_level": 4
+                            },
+                            {
+                                "type": "origins:delay",
+                                "ticks": 5,
+                                "action": {
+                                    "type": "origins:execute_command",
+                                    "command": "particle minecraft:end_rod ~ ~1 ~ 0.1 0.3 0.1 0.01 50 normal",
+                                    "permission_level": 4
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,13 @@
+{
+  "type": "phantom:mirror",
+  "generator": {
+    "type": "minecraft:flat",
+    "settings": {
+      "biome": "minecraft:deep_cold_ocean",
+      "lakes": false,
+      "features": false,
+      "layers": [],
+      "structure_overrides": []
+    }
+  }
+}

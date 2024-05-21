@@ -1,0 +1,13 @@
+{
+    "type": "origins:multiple",
+    "name": "Reflective Liquids",
+    "description": "Water makes light to reflect off of you strangely, causing you to become partly transparent when fully submerged.",
+    "transparent": {
+        "type": "origins:model_color",
+        "alpha": 0.3,
+        "condition": {
+            "type": "origins:submerged_in",
+            "fluid": "minecraft:water"
+        }
+    }
+}

@@ -1,0 +1,92 @@
+{
+    "type": "origins:multiple",
+    "name": "Unstable Gateway",
+    "description": "When in the Mirror World, you can summon a glass portal in front of you that lasts for 15 seconds.",
+    "summon": {
+        "type": "origins:active_self",
+        "key": {
+            "key": "key.origins.primary_active"
+        },
+        "cooldown": 6000,
+        "hud_render": {
+            "should_render": true,
+            "sprite_location": "origins:textures/gui/community/huang/resource_bar_02.png",
+            "condition": {
+                "type": "origins:resource",
+                "resource": "*:*_*",
+                "comparison": ">",
+                "compare_to": 1,
+                "inverted": true
+            }
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:dimension",
+                    "dimension": "phantom:mirror"
+                }
+            ]
+        },
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "origins:command",
+                                "command": "execute in minecraft:overworld if block ^ ^1 ^3 #phantom:air",
+                                "comparison": "==",
+                                "compare_to": 1
+                            },
+                            {
+                                "type": "origins:command",
+                                "command": "execute in minecraft:overworld if block ^ ^2 ^3 #phantom:air",
+                                "comparison": "==",
+                                "compare_to": 1
+                            }
+                        ]
+                    },
+                    "if_action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:execute_command",
+                                "command": "summon minecraft:armor_stand ^ ^1 ^2 {Tags:[\"UnstableGatewayStandForMirror\"], Marker:1, Invisible:1, Invulnerable: 1}",
+                                "permission_level": 4
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "power grant @e[type=armor_stand, tag=UnstableGatewayStandForMirror, limit=1, sort=nearest] phantom:assign/unstable_gateway"
+                            }
+                        ]
+                    },
+                    "else_action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:execute_command",
+                                "command": "playsound minecraft:block.beacon.deactivate player @s ~ ~ ~ 0.7 0.7"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "title @s actionbar {\"text\":\"Invalid Overworld position!\",\"color\":\"red\"}"
+                            },
+                            {
+                                "type": "origins:delay",
+                                "ticks": 1,
+                                "action": {
+                                    "type": "origins:execute_command",
+                                    "command": "resource set @s phantom:unstable_gateway_summon 6000"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    }
+}

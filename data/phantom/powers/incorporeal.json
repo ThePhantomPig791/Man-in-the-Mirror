@@ -1,0 +1,47 @@
+{
+    "type": "origins:multiple",
+    "name": "Incorporeal",
+    "description": "A quarter of the time, melee attacks will pass through you, but your own hits will do the same to others.",
+    "prevent_incoming": {
+        "type": "origins:modify_damage_taken",
+        "modifier": {
+            "name": "25% chance to not take melee damage",
+            "operation": "multiply_total",
+            "value": -1
+        },
+        "damage_condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:projectile",
+                    "inverted": true
+                }
+            ]
+        },
+        "condition": {
+            "type": "origins:predicate",
+            "predicate": "phantom:25_percent_chance"
+        }
+    },
+    "prevent_outgoing": {
+        "type": "origins:modify_damage_dealt",
+        "modifier": {
+            "name": "25% chance to not take melee damage",
+            "operation": "multiply_total",
+            "value": -1
+        },
+        "damage_condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:projectile",
+                    "inverted": true
+                }
+            ]
+        },
+        "condition": {
+            "type": "origins:predicate",
+            "predicate": "phantom:25_percent_chance"
+        }
+    }
+}

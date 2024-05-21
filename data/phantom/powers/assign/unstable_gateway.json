@@ -1,0 +1,198 @@
+{
+    "type": "origins:multiple",
+    "countdown": {
+        "type": "origins:cooldown",
+        "cooldown": 300,
+        "hud_render": {
+            "should_render": false
+        }
+    },
+    "place": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute at @e[tag=UnstableGatewayStandForMirror] run forceload add ~ ~",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute at @s run setblock ~ ~ ~ minecraft:glass",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute at @s run setblock ~ ~1 ~ minecraft:glass",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute at @s run execute in minecraft:overworld run setblock ~ ~ ~ minecraft:glass",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute at @s run execute in minecraft:overworld run setblock ~ ~1 ~ minecraft:glass",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute at @s align xyz run particle minecraft:enchant ~0.5 ~1 ~0.5 0.3 0.3 0.3 0.1 10 force",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute at @s align xyz run execute in minecraft:overworld run particle minecraft:enchant ~0.5 ~1 ~0.5 0.3 0.3 0.3 0.1 10 force",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute at @s align xyz run particle minecraft:end_rod ~0.5 ~1.1 ~0.5 0.01 0.3 0.01 0 10 normal",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute at @s align xyz run execute in minecraft:overworld run particle minecraft:end_rod ~0.5 ~1.1 ~0.5 0.01 0.3 0.01 0 10 normal",
+                    "permission_level": 4
+                }
+            ]
+        },
+        "rising_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute at @s align xyz run playsound minecraft:block.beacon.activate ambient @a[distance=..10] ~ ~ ~ 1 2",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 10,
+                    "action": {
+                        "type": "origins:execute_command",
+                        "command": "execute at @s align xyz run playsound minecraft:block.beacon.ambient ambient @a[distance=..10] ~ ~ ~ 1 2",
+                        "permission_level": 4
+                    }
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute at @s align xyz run execute in minecraft:overworld run playsound minecraft:block.beacon.activate ambient @a[distance=..10] ~ ~ ~ 1 2",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 10,
+                    "action": {
+                        "type": "origins:execute_command",
+                        "command": "execute at @s align xyz run execute in minecraft:overworld run playsound minecraft:block.beacon.ambient ambient @a[distance=..10] ~ ~ ~ 1 2",
+                        "permission_level": 4
+                    }
+                }
+            ]
+        },
+        "falling_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute at @s run setblock ~ ~ ~ minecraft:air",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute at @s run setblock ~ ~1 ~ minecraft:air",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute at @s run execute in minecraft:overworld run setblock ~ ~ ~ minecraft:air",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute at @s in minecraft:overworld run setblock ~ ~1 ~ minecraft:air",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute at @s align xyz run particle minecraft:cloud ~0.5 ~1 ~0.5 0.3 0.3 0.3 0.1 50 normal",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute at @s align xyz run execute in minecraft:overworld run particle minecraft:cloud ~0.5 ~1 ~0.5 0.3 0.3 0.3 0.1 50 normal",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute at @s align xyz run playsound minecraft:block.beacon.deactivate ambient @a[distance=..10] ~0.5 ~ ~0.5 1 2",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute at @s align xyz run execute in minecraft:overworld run playsound minecraft:block.beacon.deactivate ambient @a[distance=..10] ~0.5 ~ ~0.5 1 2",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 5,
+                    "action": {
+                        "type": "origins:execute_command",
+                        "command": "execute at @s run forceload remove ~ ~",
+                        "permission_level": 4
+                    }
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 7,
+                    "action": {
+                        "type": "origins:execute_command",
+                        "command": "execute as @s run kill @s[type=armor_stand]",
+                        "permission_level": 4
+                    }
+                }
+            ]
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_countdown",
+            "comparison": ">=",
+            "compare_to": 3
+        }
+    },
+    "added": {
+        "type": "origins:action_on_callback",
+        "entity_action_gained": {
+            "type": "origins:trigger_cooldown",
+            "power": "*:*_countdown"
+        }
+    },
+    "sound": {
+        "type": "origins:action_over_time",
+        "interval": 40,
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute at @s align xyz run playsound minecraft:block.portal.ambient ambient @a[distance=..10] ~0.5 ~1 ~0.5 0.3 0.1",
+                    "permission_level": 4
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute at @s align xyz run execute in minecraft:overworld run playsound minecraft:block.portal.ambient ambient @a[distance=..10] ~0.5 ~1 ~0.5 0.3 0.1",
+                    "permission_level": 4
+                }
+            ]
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_countdown",
+            "comparison": ">=",
+            "compare_to": 3
+        }
+    }
+}

@@ -1,0 +1,173 @@
+{
+    "type": "origins:multiple",
+    "name": "Reflective Metals",
+    "description": "Iron, gold, diamond, and netherite armor reflect parts of your body and scatter them, causing you to have 2 less hearts whenever you're wearing any one piece of iron or gold, and 4 less hearts with the other two.",
+    "badges": [
+        {
+            "type": "origins:tooltip",
+            "sprite": "origins:textures/gui/badge/info.png",
+            "text": "Wearing more pieces of armor will not increase the amount of health you lose; a full set of iron armor will result in the same health deduction as only iron boots."
+        }
+    ],
+    "less_health": {
+        "type": "origins:conditioned_attribute",
+        "modifier": {
+            "attribute": "minecraft:generic.max_health",
+            "operation": "addition",
+            "value": -4,
+            "name": "Less health when wearing iron or gold armor"
+        },
+        "tick_rate": 20,
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:or",
+                    "conditions": [
+                        {
+                            "type": "origins:equipped_item",
+                            "equipment_slot": "head",
+                            "item_condition": {
+                                "type": "origins:ingredient",
+                                "ingredient": {
+                                    "tag": "phantom:reflective_armors"
+                                }
+                            }
+                        },
+                        {
+                            "type": "origins:equipped_item",
+                            "equipment_slot": "chest",
+                            "item_condition": {
+                                "type": "origins:ingredient",
+                                "ingredient": {
+                                    "tag": "phantom:reflective_armors"
+                                }
+                            }
+                        },
+                        {
+                            "type": "origins:equipped_item",
+                            "equipment_slot": "legs",
+                            "item_condition": {
+                                "type": "origins:ingredient",
+                                "ingredient": {
+                                    "tag": "phantom:reflective_armors"
+                                }
+                            }
+                        },
+                        {
+                            "type": "origins:equipped_item",
+                            "equipment_slot": "feet",
+                            "item_condition": {
+                                "type": "origins:ingredient",
+                                "ingredient": {
+                                    "tag": "phantom:reflective_armors"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "origins:or",
+                    "inverted": true,
+                    "conditions": [
+                        {
+                            "type": "origins:equipped_item",
+                            "equipment_slot": "head",
+                            "item_condition": {
+                                "type": "origins:ingredient",
+                                "ingredient": {
+                                    "tag": "phantom:reflective_armors_2"
+                                }
+                            }
+                        },
+                        {
+                            "type": "origins:equipped_item",
+                            "equipment_slot": "chest",
+                            "item_condition": {
+                                "type": "origins:ingredient",
+                                "ingredient": {
+                                    "tag": "phantom:reflective_armors_2"
+                                }
+                            }
+                        },
+                        {
+                            "type": "origins:equipped_item",
+                            "equipment_slot": "legs",
+                            "item_condition": {
+                                "type": "origins:ingredient",
+                                "ingredient": {
+                                    "tag": "phantom:reflective_armors_2"
+                                }
+                            }
+                        },
+                        {
+                            "type": "origins:equipped_item",
+                            "equipment_slot": "feet",
+                            "item_condition": {
+                                "type": "origins:ingredient",
+                                "ingredient": {
+                                    "tag": "phantom:reflective_armors_2"
+                                }
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "lesser_health": {
+        "type": "origins:conditioned_attribute",
+        "modifier": {
+            "attribute": "minecraft:generic.max_health",
+            "operation": "addition",
+            "value": -8,
+            "name": "Less health when wearing diamond or netherite armors"
+        },
+        "tick_rate": 20,
+        "condition": {
+            "type": "origins:or",
+            "conditions": [
+                {
+                    "type": "origins:equipped_item",
+                    "equipment_slot": "head",
+                    "item_condition": {
+                        "type": "origins:ingredient",
+                        "ingredient": {
+                            "tag": "phantom:reflective_armors_2"
+                        }
+                    }
+                },
+                {
+                    "type": "origins:equipped_item",
+                    "equipment_slot": "chest",
+                    "item_condition": {
+                        "type": "origins:ingredient",
+                        "ingredient": {
+                            "tag": "phantom:reflective_armors_2"
+                        }
+                    }
+                },
+                {
+                    "type": "origins:equipped_item",
+                    "equipment_slot": "legs",
+                    "item_condition": {
+                        "type": "origins:ingredient",
+                        "ingredient": {
+                            "tag": "phantom:reflective_armors_2"
+                        }
+                    }
+                },
+                {
+                    "type": "origins:equipped_item",
+                    "equipment_slot": "feet",
+                    "item_condition": {
+                        "type": "origins:ingredient",
+                        "ingredient": {
+                            "tag": "phantom:reflective_armors_2"
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

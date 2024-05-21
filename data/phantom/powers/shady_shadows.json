@@ -1,0 +1,47 @@
+{
+    "type": "origins:multiple",
+    "name": "Shady Shadows",
+    "description": "When under a light level of 7 or less, you gain slowness 2, weakness 2, and blindness 2. When under a light level of 3 or less, you also start to wither and decay.",
+    "7_less": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:brightness",
+                    "comparison": "<=",
+                    "compare_to": 0.19
+                },
+                {
+                    "type": "origins:dimension",
+                    "dimension": "minecraft:overworld"
+                }
+            ]
+        },
+        "entity_action": {
+            "type": "origins:and",
+            "actions": {
+                "type": "origins:apply_effect",
+                "effects": [
+                    {
+                        "effect": "minecraft:weakness",
+                        "duration": 10,
+                        "amplifier": 1,
+                        "is_ambient": false,
+                        "show_particles": false,
+                        "show_icon": false
+                    },
+                    {
+                        "effect": "minecraft:slowness",
+                        "duration": 10,
+                        "amplifier": 1,
+                        "is_ambient": false,
+                        "show_particles": false,
+                        "show_icon": false
+                    }
+                ]
+            }
+        }
+    }
+}

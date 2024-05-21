@@ -1,0 +1,13 @@
+{
+    "type": "origins:multiple",
+    "name": "Shattering",
+    "description": "You take 25% more damage from everything.",
+    "more_damage": {
+        "type": "origins:modify_damage_taken",
+        "modifier": {
+            "operation": "multiply_base",
+            "value": "0.25",
+            "name": "25% more damage"
+        }
+    }
+}

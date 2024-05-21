@@ -1,0 +1,81 @@
+{
+    "type": "origins:multiple",
+    "name": "Trap in a Box",
+    "description": "With this power toggled, you can right-click an entity to freeze it in an unpassable mirror, and it won't be able to escape until 10 seconds pass and the mirror shatters, dealing a little bit of damage.",
+    "toggle": {
+        "type": "origins:toggle",
+        "key": {
+            "key": "key.origins.secondary_active"
+        },
+        "active_by_default": false
+    },
+    "bar": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 1,
+        "start_value": 0,
+        "hud_render": {
+            "should_render": true,
+            "condition": {
+                "type": "origins:power_active",
+                "power": "*:*_toggle"
+            },
+            "sprite_location": "minecraft:textures/block/glass.png",
+            "bar_index": 100
+        }
+    },
+    "trap": {
+        "type": "origins:action_on_entity_use",
+        "bientity_condition": {
+            "type": "origins:target_condition",
+            "condition": {
+                "type": "origins:origin",
+                "origin": "phantom:mirror",
+                "inverted": true
+            }
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:power_active",
+                    "power": "*:*_toggle"
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_cooldown",
+                    "comparison": "==",
+                    "compare_to": 0
+                }
+            ]
+        },
+        "bientity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:actor_action",
+                    "action": {
+                        "type": "origins:trigger_cooldown",
+                        "power": "*:*_cooldown"
+                    }
+                },
+                {
+                    "type": "origins:target_action",
+                    "action": {
+                        "type": "origins:execute_command",
+                        "command": "power grant @s phantom:assign/trapped_in_a_box"
+                    }
+                }
+            ]
+        }
+    },
+    "cooldown": {
+        "type": "origins:cooldown",
+        "cooldown": 1200,
+        "hud_render": {
+            "should_render": true,
+            "sprite_location": "origins:textures/gui/community/huang/resource_bar_01.png",
+            "bar_index": 9
+        }
+    }
+}
