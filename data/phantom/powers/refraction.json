@@ -1,0 +1,60 @@
+{
+    "type": "origins:multiple",
+    "activate": {
+        "type": "origins:active_self",
+        "key": {
+            "key": "key.origins.secondary_active"
+        },
+        "hud_render": {
+            "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_03.png",
+            "bar_index": 12
+        },
+        "cooldown": 2400,
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:sneaking",
+                    "inverted": true
+                }
+            ]
+        },
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type": "origins:dimension",
+                        "dimension": "phantom:mirror"
+                    },
+                    "if_action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:execute_command",
+                                "command": "execute in minecraft:overworld run summon minecraft:armor_stand ~ ~ ~ {Marker:1b, NoGravity: 1b, cardinal_components: {\"apoli:powers\": {Powers: [{Type: \"phantom:assign/refraction_stand\", Sources:[\"apoli:command\"]}]}}}"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "particle minecraft:reverse_portal ~ ~ ~ 0 0 0 1 50"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "particle minecraft:flash ~ ~ ~ 0 0 0 1 1"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "playsound minecraft:entity.illusioner.prepare_mirror player @a[distance=..24] ~ ~ ~ 1 1.3"
+                            }
+                        ]
+                    },
+                    "else_action": {
+                        "type": "origins:execute_command",
+                        "command": "summon minecraft:armor_stand ~ ~ ~ {Marker:1b, NoGravity: 1b, cardinal_components: {\"apoli:powers\": {Powers: [{Type: \"phantom:assign/refraction_stand\", Sources:[\"apoli:command\"]}]}}}"
+                    }
+                }
+            ]
+        }
+    }
+}

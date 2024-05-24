@@ -1,13 +1,20 @@
 {
     "type": "origins:multiple",
     "name": "Looking Glass",
-    "description": "Any glass you walk through will transport you to the Mirror World, and any glass blocks in the physical plane will also appear at the same location in the Mirror World.",
+    "description": "Any full glass you walk through will transport you to the Mirror World, and any glass blocks in the physical plane will also appear at the same location in the Mirror World.",
+    "badges": [
+        {
+            "type": "origins:tooltip",
+            "sprite": "origins:textures/gui/badge/info.png",
+            "text": "You are unable to pass through Tinted Glass."
+        }
+    ],
     "phasing": {
         "type": "origins:phasing",
         "render_type": "none",
         "block_condition": {
-            "type": "origins:block",
-            "block": "minecraft:glass"
+            "type": "origins:in_tag",
+            "tag": "phantom:glass"
         },
         "phase_down_condition": {
             "type": "origins:and",
@@ -57,15 +64,15 @@
                         {
                             "type": "origins:in_block",
                             "block_condition": {
-                                "type": "origins:block",
-                                "block": "minecraft:glass"
+                                "type": "origins:in_tag",
+                                "tag": "phantom:glass"
                             }
                         },
                         {
                             "type": "origins:in_block_anywhere",
                             "block_condition": {
-                                "type": "origins:block",
-                                "block": "minecraft:glass"
+                                "type": "origins:in_tag",
+                                "tag": "phantom:glass"
                             },
                             "comparison": "!=",
                             "compare_to": 0
@@ -168,8 +175,8 @@
                                     "type": "origins:offset",
                                     "y": 1,
                                     "condition": {
-                                        "type": "origins:block",
-                                        "block": "minecraft:glass"
+                                        "type": "origins:in_tag",
+                                        "tag": "phantom:glass"
                                     }
                                 },
                                 "inverted": true

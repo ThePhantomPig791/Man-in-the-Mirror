@@ -87,5 +87,25 @@
                 }
             }
         }
+    },
+    "remove_tinted_glass": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "condition": {
+            "type": "origins:dimension",
+            "dimension": "phantom:mirror"
+        },
+        "entity_action": {
+            "type": "origins:block_action_at",
+            "block_action": {
+                "type": "origins:area_of_effect",
+                "radius": 3,
+                "shape": "sphere",
+                "block_action": {
+                    "type": "origins:execute_command",
+                    "command": "function phantom:remove_tinted_glass"
+                }
+            }
+        }
     }
 }
