@@ -7,6 +7,6 @@
 
 ### Changes
 - Made stained glass compatible with the Mirror World
-- Slightly changed Looking Glass' description to specify you can't pass through tinted glass\
+- Slightly changed Looking Glass' description to specify you can't pass through tinted glass
 - Made Trap in a Box only toggleable when sneaking
 - Changed hud render for Trap in a Box
