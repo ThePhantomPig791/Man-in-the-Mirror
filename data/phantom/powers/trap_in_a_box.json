@@ -2,14 +2,36 @@
     "type": "origins:multiple",
     "name": "Trap in a Box",
     "description": "With this power toggled, you can right-click an entity to freeze it in an unpassable mirror, and it won't be able to escape until 10 seconds pass and the mirror shatters, dealing a little bit of damage.",
-    "toggle": {
-        "type": "origins:toggle",
+    "toggle_active": {
+        "type": "origins:active_self",
         "key": {
             "key": "key.origins.secondary_active"
         },
-        "active_by_default": false
+        "condition": {
+            "type": "origins:sneaking"
+        },
+        "entity_action": {
+            "type": "origins:if_else",
+            "condition": {
+                "type": "origins:resource",
+                "resource": "*:*_toggle",
+                "comparison": "==",
+                "compare_to": 0
+            },
+            "if_action": {
+                "type": "origins:change_resource",
+                "resource": "*:*_toggle",
+                "change": 1
+            },
+            "else_action": {
+                "type": "origins:change_resource",
+                "resource": "*:*_toggle",
+                "change": 0,
+                "operation": "set"
+            }
+        }
     },
-    "bar": {
+    "toggle": {
         "type": "origins:resource",
         "min": 0,
         "max": 1,
@@ -17,11 +39,13 @@
         "hud_render": {
             "should_render": true,
             "condition": {
-                "type": "origins:power_active",
-                "power": "*:*_toggle"
+                "type": "origins:resource",
+                "resource": "*:*_toggle",
+                "comparison": "==",
+                "compare_to": 1
             },
-            "sprite_location": "minecraft:textures/block/glass.png",
-            "bar_index": 100
+            "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_01.png",
+            "bar_index": 4
         }
     },
     "trap": {
