@@ -6,7 +6,7 @@
         "type": "origins:modify_damage_taken",
         "modifier": {
             "operation": "multiply_base",
-            "value": "0.25",
+            "value": 0.25,
             "name": "25% more damage"
         }
     }
