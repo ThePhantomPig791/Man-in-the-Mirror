@@ -2,6 +2,13 @@
     "type": "origins:multiple",
     "name": "Trap in a Box",
     "description": "With this power toggled, you can right-click an entity to freeze it in an unpassable mirror, and it won't be able to escape until 10 seconds pass and the mirror shatters, dealing a little bit of damage.",
+    "badges": [
+        {
+            "type": "origins:keybind",
+            "sprite": "origins:textures/gui/badge/toggle.png",
+            "text": "Toggle with %s."
+        }
+    ],
     "toggle_active": {
         "type": "origins:active_self",
         "key": {
@@ -59,8 +66,10 @@
             "type": "origins:and",
             "conditions": [
                 {
-                    "type": "origins:power_active",
-                    "power": "*:*_toggle"
+                    "type": "origins:resource",
+                    "resource": "*:*_toggle",
+                    "comparison": "==",
+                    "compare_to": 1
                 },
                 {
                     "type": "origins:resource",
